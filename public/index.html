@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Poll Frame</title>
+</head>
+<body>
+    <h2>Do you think the adoption of cryptocurrency payments can significantly expand healthcare access and efficiency?</h2>
+    <form id="pollForm">
+        <input type="radio" id="optionA" name="pollOption" value="Yes, it can make healthcare more accessible globally.">
+        <label for="optionA">Yes, it can make healthcare more accessible globally.</label><br>
+        <input type="radio" id="optionB" name="pollOption" value="No, it might create more complexity without solving core issues.">
+        <label for="optionB">No, it might create more complexity without solving core issues.</label><br>
+        <input type="radio" id="optionC" name="pollOption" value="Unsure, it depends on regulatory and technological advancements.">
+        <label for="optionC">Unsure, it depends on regulatory and technological advancements.</label><br>
+        <input type="submit" value="Vote" id="voteButton">
+    </form>
+    <div id="thanksMessage" style="display:none;">Thanks for voting!</div>
+
+    <script>
+        document.getElementById('pollForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const choice = formData.get('pollOption');
+            // Mock sending the vote to the backend
+            console.log(JSON.stringify({ vote: choice }));
+            // Show a thank you message
+            document.getElementById('voteButton').disabled = true;
+            document.getElementById('thanksMessage').style.display = 'block';
+        };
+    </script>
+</body>
+</html>
